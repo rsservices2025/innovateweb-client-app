@@ -1,7 +1,11 @@
-import { supabase } from '../../lib/supabaseClient';
+// Import the new server client creation function
+import { createClient } from '@/lib/supabase/server-client';
 
 // Server Component to fetch data directly from Supabase
 async function getPortfolioData() {
+  // Create a Supabase client for this server component
+  const supabase = createClient();
+
   // Fetch all categories
   const { data: categories, error: categoriesError } = await supabase
     .from('categories')
